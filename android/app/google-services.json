@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "475195321019",
+    "project_id": "shad1-bfc04",
+    "storage_bucket": "shad1-bfc04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475195321019:android:a26ee83fa671742d1ed79e",
+        "android_client_info": {
+          "package_name": "com.example.must_online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475195321019-a26ca8an15unuaoeo2r9j06jg4rm8d8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK0LR3a0tA2aWW3Ge38GGRRxZ4uN_WXAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475195321019-a26ca8an15unuaoeo2r9j06jg4rm8d8s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
