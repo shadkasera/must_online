@@ -41,7 +41,9 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               //picture of the app
-
+              const SizedBox(
+                height: 70,
+              ),
               //password text field
 
               Padding(
@@ -67,7 +69,9 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ),
               ),
-
+              const SizedBox(
+                height: 20,
+              ),
               // another field
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -100,12 +104,12 @@ class WelcomePage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 50),
                     child: Text(
                       'Forget Password?',
                       style: TextStyle(
-                        color: Colors.grey[500],
+                        color: Colors.blue,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -137,6 +141,23 @@ class WelcomePage extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 50),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Does not have an account?'),
+                        Text(
+                          '  Sign In',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
