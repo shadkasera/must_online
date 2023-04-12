@@ -20,13 +20,13 @@ class HomeScreen extends StatelessWidget {
             );
           },
         ),
-        title: const Text('Must Schools'),
+        title: const Text('MUST SCHOOLS'),
         centerTitle: true,
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 20),
             child: Icon(
-              Icons.settings,
+              Icons.search,
             ),
           )
         ],
@@ -59,7 +59,16 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+           
             ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () {
+                // Update the UI
+              },
+            ),
+            
+             ListTile(
               leading: const Icon(Icons.logout,),
               title: const Text('Log out'),
               onTap: () {
@@ -67,20 +76,7 @@ class HomeScreen extends StatelessWidget {
                  FirebaseAuth.instance.signOut();
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.accessibility),
-              title: const Text('Item 2'),
-              onTap: () {
-                // Update the UI
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.account_balance),
-              title: const Text('Item 3'),
-              onTap: () {
-                // Update the UI
-              },
-            ),
+            
           ],
         ),
       ),
