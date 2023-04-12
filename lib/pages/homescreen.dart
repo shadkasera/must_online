@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:must_online/sign_up.dart';
+import 'package:must_online/pages/timetables.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[400],
+        backgroundColor: Colors.blue[500],
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -21,11 +21,11 @@ class HomeScreen extends StatelessWidget {
             );
           },
         ),
-        title: const Text('MUST SCHOOLS'),
+        title: const Text('MUST  TIMETABLE'),
         centerTitle: true,
-        actions: const [
+        actions:  const [
           Padding(
-            padding: EdgeInsets.only(right: 20),
+            padding: EdgeInsets.only(right: 30),
             child: Icon(
               Icons.search,
             ),
@@ -103,19 +103,21 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const Signup(),
-                          //   ),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Timetables(),
+                            ),
+                          );
                       },
                       child: const Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-                        child: Text(
-                          'Acadamy of Medical sciences',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        child: Center(
+                          child: Text(
+                            'VIEW ROOM TIMETABLES',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
@@ -144,9 +146,11 @@ class HomeScreen extends StatelessWidget {
                       child: const Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-                        child: Text(
-                          'Bingu School of Culture and Heritage',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        child: Center(
+                          child: Text(
+                            'VIEW LECTURERS TIMETABLES',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
                         ),
                       ),
                     ),

@@ -73,15 +73,17 @@ class _LoginState extends State<Login> {
                         cursorColor: Colors.white,
                         style: const TextStyle(
                           color: Colors.white,
+                          fontSize: 20,
                         ),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'email',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.white,
+                            fontSize: 20,
                           ),
                           suffixIcon: IconButton(
-                            icon: Icon(Icons.clear),
+                            icon: const Icon(Icons.clear),
                             onPressed: () {
                               // clear the email field when the clear button is pressed
                               emailController.clear();
@@ -93,14 +95,12 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+
                 // another field
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30,
-                    vertical: 25,
+                    vertical: 10,
                   ),
                   child: Container(
                     decoration: BoxDecoration(
@@ -114,7 +114,8 @@ class _LoginState extends State<Login> {
                           cursorColor: Colors.white,
                           controller: passwordController,
                           style: const TextStyle(
-                            color: Colors.white, // set text color to white
+                            color: Colors.white,
+                            fontSize: 20, // set text color to white
                           ),
                           obscureText: _isObscure,
                           // toggle this on button press
@@ -149,7 +150,7 @@ class _LoginState extends State<Login> {
                   child: ElevatedButton(
                     onPressed: () => login(context),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
@@ -223,9 +224,15 @@ class _LoginState extends State<Login> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.red,
-            content: Text(
-              'Please check your email and password!',
-              style: TextStyle(fontSize: 24),
+            behavior: SnackBarBehavior.floating, // set the behavior to floating
+            content: SizedBox(
+              height: 100, // set the height of the Container widget
+              child: Center(
+                child: Text(
+                  'Please check your email and password!',
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
             ),
             duration: Duration(seconds: 2),
           ),
