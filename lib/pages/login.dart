@@ -70,6 +70,9 @@ class _LoginState extends State<Login> {
                       child: TextField(
                         controller: emailController,
                         cursorColor: Colors.white,
+                        style: const TextStyle(
+                            color: Colors.white, // set text color to white
+                          ),
                         decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'email',
@@ -95,12 +98,15 @@ class _LoginState extends State<Login> {
                       borderRadius: BorderRadius.circular(1),
                     ),
                     child: Padding(
-                        padding:  const EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: TextField(
                           cursorColor: Colors.white,
                           controller: passwordController,
-                          obscureText:
-                              _isObscure, // toggle this on button press
+                          style: const TextStyle(
+                            color: Colors.white, // set text color to white
+                          ),
+                          obscureText: _isObscure,
+                          // toggle this on button press
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Password',
