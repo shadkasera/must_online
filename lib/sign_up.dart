@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
   @override
-  State<Login> createState() => _LoginState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
+class _SignupState extends State<Signup> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
@@ -50,6 +49,37 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 20,
               ),
+
+              //name field
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 25,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff697692),
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(1),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: TextField(
+                      controller: emailController,
+                      cursorColor: Colors.white,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'name',
+                        hintStyle: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              //
               //password text field
 
               Padding(
@@ -116,18 +146,18 @@ class _LoginState extends State<Login> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
                 child: ElevatedButton(
-                  onPressed: () => login(context),
+                  onPressed: () {},
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Icon(
-                          Icons.lock,
+                          Icons.add,
                         ),
                         SizedBox(width: 4),
                         Text(
-                          'Log In',
+                          'Create account',
                           style: TextStyle(
                             fontSize: 18.0,
                           ),
@@ -137,58 +167,14 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              //another field
-              Row( mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'New?',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Text(
-                    '  create account',
-                    style: TextStyle(fontSize: 18, color: Colors.blue), 
-                  ),
-                ],
-              ),
+              
+              
+
               //register
             ],
           ),
         ),
       ),
     );
-  }
-
-  Future login(BuildContext context) async {
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim());
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            backgroundColor: Colors.red,
-            content: Text('No user found for that email.'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      } else if (e.code == 'wrong-password') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            backgroundColor: Colors.red,
-            content: Text('Wrong password provided for that user.'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            backgroundColor: Colors.red,
-            content: Text('Please check your input'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      }
-    }
   }
 }

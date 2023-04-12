@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:must_online/sign_up.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -102,12 +103,12 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const HomeScreen(),
-                        //     ),
-                        //   );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const Signup(),
+                          //   ),
+                          // );
                       },
                       child: const Padding(
                         padding:
