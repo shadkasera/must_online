@@ -23,25 +23,26 @@ class _LoginState extends State<Login> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.green,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white,
+                      color: Colors.green,
                       width: 20.0,
                     ),
                   ),
                   child: Image.asset(
                     'assets/images/must_logo1.png',
-                    height: 50,
+                    height: 80,
                   ),
                 ),
 
                 const Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 25,
+                    vertical: 30,
                   ),
                   child: Text(
-                    'MUST ONLINE',
+                    'MUST TIMETABLE',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -71,12 +72,22 @@ class _LoginState extends State<Login> {
                         controller: emailController,
                         cursorColor: Colors.white,
                         style: const TextStyle(
-                            color: Colors.white, // set text color to white
-                          ),
-                        decoration: const InputDecoration(
+                          color: Colors.white,
+                        ),
+                        decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'email',
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              // clear the email field when the clear button is pressed
+                              emailController.clear();
+                            },
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -190,7 +201,10 @@ class _LoginState extends State<Login> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.red,
-            content: Text('No user found for that email.'),
+            content: Text(
+              'Please check your input',
+              style: TextStyle(fontSize: 24),
+            ),
             duration: Duration(seconds: 2),
           ),
         );
@@ -198,7 +212,10 @@ class _LoginState extends State<Login> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.red,
-            content: Text('Wrong password provided for that user.'),
+            content: Text(
+              'Please check your input',
+              style: TextStyle(fontSize: 24),
+            ),
             duration: Duration(seconds: 2),
           ),
         );
@@ -206,7 +223,10 @@ class _LoginState extends State<Login> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.red,
-            content: Text('Please check your input'),
+            content: Text(
+              'Please check your email and password!',
+              style: TextStyle(fontSize: 24),
+            ),
             duration: Duration(seconds: 2),
           ),
         );
