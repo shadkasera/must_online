@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:must_online/welcomepage.dart';
+import 'package:must_online/pages/homescreen.dart';
+import 'package:must_online/pages/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -19,8 +27,26 @@ class MyApp extends StatelessWidget {
      
         primarySwatch: Colors.green,
       ),
-      home: const WelcomePage()
+      home: const Home()
+    );
+  }
+  
+}
+ class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return const HomeScreen();
+            } else {
+              return const Login();
+            }
+          }),
     );
   }
 }
- 
