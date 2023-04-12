@@ -22,7 +22,7 @@ class Timetables extends StatelessWidget {
         ),
         title: const Text('MUST  TIMETABLE'),
         centerTitle: true,
-        actions:  const [
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 30),
             child: Icon(
@@ -59,7 +59,6 @@ class Timetables extends StatelessWidget {
                 ),
               ),
             ),
-           
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text('Home'),
@@ -67,33 +66,32 @@ class Timetables extends StatelessWidget {
                 // Update the UI
               },
             ),
-            
-             ListTile(
-              leading: const Icon(Icons.logout,),
+            ListTile(
+              leading: const Icon(
+                Icons.logout,
+              ),
               title: const Text('Log out'),
               onTap: () {
                 // Update the UI
-                 FirebaseAuth.instance.signOut();
+                FirebaseAuth.instance.signOut();
               },
             ),
-            
           ],
         ),
       ),
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: const [
-                //another field
-
-               
-
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text(
+                  'MONDAY',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
               
-              ],
-            ),
+            ],
           ),
         ),
       ),
