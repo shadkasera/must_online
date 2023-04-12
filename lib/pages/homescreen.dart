@@ -10,8 +10,15 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
-        leading: const Icon(
-          Icons.menu,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
         ),
         title: const Text('Must Schools'),
         centerTitle: true,
@@ -25,6 +32,58 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: const Color(0xffc0dbe9),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 50,
+                    ),
+                    Text(
+                      user.email!,
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout,),
+              title: const Text('Log out'),
+              onTap: () {
+                // Update the UI
+                 FirebaseAuth.instance.signOut();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.accessibility),
+              title: const Text('Item 2'),
+              onTap: () {
+                // Update the UI
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_balance),
+              title: const Text('Item 3'),
+              onTap: () {
+                // Update the UI
+              },
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -33,91 +92,9 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 //another field
-          
-                const Text('Signed In As'),
-                const SizedBox(height: 12),
-                Text(user.email!),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                  child: ElevatedButton(
-                    onPressed: () => FirebaseAuth.instance.signOut(),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.logout,
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            'Logout',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-          
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff697692),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const HomeScreen(),
-                        //     ),
-                        //   );
-                      },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-                        child: Text(
-                          'Malawi Institute of Technology',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff697692),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const HomeScreen(),
-                        //     ),
-                        //   );
-                      },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-                        child: Text(
-                          'Ndata School of Climate and Earth Sciences',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+
+               
+
                 //another field
                 Padding(
                   padding:
@@ -147,9 +124,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-          
+
                 //register
-          
+
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
