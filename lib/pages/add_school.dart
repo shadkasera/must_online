@@ -76,9 +76,9 @@ class _AddSchoolState extends State<AddSchool> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('School Added Successfully'),
+          content: Text('School Added Successfully',),
           backgroundColor: Colors.green,
-          duration: Duration(seconds: 2),
+          duration: Duration(seconds: 5),
         ),
       );
     } catch (e) {
@@ -86,7 +86,7 @@ class _AddSchoolState extends State<AddSchool> {
         SnackBar(
           content: Text('Error $e'),
           backgroundColor: Colors.red,
-          duration: const Duration(seconds: 12),
+          duration: const Duration(seconds: 5),
         ),
       );
     }
