@@ -80,7 +80,9 @@ class _AddSchoolState extends State<AddSchool> {
           backgroundColor: Colors.green,
           duration: Duration(seconds: 5),
         ),
+
       );
+        Navigator.pop(context);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
