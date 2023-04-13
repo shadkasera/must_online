@@ -106,33 +106,51 @@ class HomeScreen extends StatelessWidget {
                   separatorBuilder: (BuildContext context, int index) =>
                       const Divider(),
                   itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      leading: const Icon(Icons.school),
-                      title: Text(schools[index].name),
-                      subtitle: Text(schools[index].location),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      EditSchool(school: schools[index]),
-                                ),
-                              );
-                            },
-                            icon: const Icon(Icons.edit),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              deleteSchool(
-                                  context: context, school: schools[index]);
-                            },
-                            icon: const Icon(Icons.delete),
-                          ),
-                        ],
+                    return Dismissible(
+                      key: Key(schools[index].id),
+                      direction: DismissDirection.endToStart,
+                      background: Container(
+                        color: Colors.red,
+                        alignment: Alignment.centerRight,
+                        child: const Icon(
+                          Icons.delete_forever,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
+                      ),
+                      onDismissed: (direction) {
+                        deleteSchool(
+                                    context: context, school: schools[index]);
+                       
+                      },
+                      child: ListTile(
+                        leading: const Icon(Icons.school),
+                        title: Text(schools[index].name),
+                        subtitle: Text(schools[index].location),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditSchool(school: schools[index]),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(Icons.edit),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                deleteSchool(
+                                    context: context, school: schools[index]);
+                              },
+                              icon: const Icon(Icons.delete),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
