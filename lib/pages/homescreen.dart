@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:must_online/models/school.dart';
-import 'package:must_online/pages/timetables.dart';
 
 import 'add_school.dart';
+import 'edit_school.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -107,9 +107,33 @@ class HomeScreen extends StatelessWidget {
                       const Divider(),
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                       leading: const Icon(Icons.school),
+                      leading: const Icon(Icons.school),
                       title: Text(schools[index].name),
-                      subtitle:  Text(schools[index].location),
+                      subtitle: Text(schools[index].location),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      EditSchool(school: schools[index]),
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.edit),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              deleteSchool(
+                                  context: context, school: schools[index]);
+                            },
+                            icon: const Icon(Icons.delete),
+                          ),
+                        ],
+                      ),
                     );
                   },
                 );
@@ -122,12 +146,42 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Stream<List<School>> readSchools() => FirebaseFirestore.instance
-      .collection('schools')
-      .snapshots()
-      .map((snapshot) => snapshot.docs
-          .map((doc) => School.fromJson(
-                doc.data(),
-              ))
-          .toList());
+  Stream<List<School>> readSchools() =>
+      FirebaseFirestore.instance.collection('schools').snapshots().map(
+            (snapshot) => snapshot.docs
+                .map(
+                  (doc) => School.fromJson(
+                    doc.data(),
+                  ),
+                )
+                .toList(),
+          );
+
+  Future<void> deleteSchool(
+      {required BuildContext context, required School school}) async {
+    final docSchool =
+        FirebaseFirestore.instance.collection('schools').doc(school.id);
+
+    try {
+      await docSchool.delete();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'School Deleted Successfully',
+          ),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 5),
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error $e'),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 5),
+        ),
+      );
+    }
+  }
 }
