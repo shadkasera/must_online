@@ -123,13 +123,13 @@ class HomeScreen extends StatelessWidget {
 
                       // },
                       child: ListTile(
-                        leading: Text(
-                          lecturers[index].name,
-                          style: const TextStyle(fontSize: 18),
-                        ),
+                        // leading: Text(
+                        //   lecturers[index].name,
+                        //   style: const TextStyle(fontSize: 12),
+                        // ),
                         trailing: Text(
-                          lecturers[index].name,
-                          style: const TextStyle(fontSize: 10),
+                          lecturers[index].time,
+                          style: const TextStyle(fontSize: 14),
                         ),
                         
                         title: Text(

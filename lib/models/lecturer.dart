@@ -5,10 +5,12 @@ class Lecturer {
   String name;
   String module;
   String klass;
+  String time;
+  
 
 
 
-  Lecturer({required this.id, required this.name, required this.module, required this.klass});
+  Lecturer({required this.id, required this.name, required this.module, required this.klass, required this.time});
 
   factory Lecturer.fromJson(Map<String, dynamic> json) {
     return Lecturer(
@@ -16,6 +18,7 @@ class Lecturer {
       name: json['name'],
       module: json['module'],
       klass: json['klass'],
+      time: json['time'],
      
     );
   }
@@ -26,6 +29,7 @@ class Lecturer {
       'name': name,
       'module': module,
       'klass': klass,
+      'time': time,
       
     };
   }

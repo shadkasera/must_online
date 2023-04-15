@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:must_online/models/lecturer.dart';
-import 'package:must_online/models/school.dart';
 
 class AddLecturer extends StatefulWidget {
   const AddLecturer({super.key});
@@ -15,6 +14,7 @@ class _AddLecturerState extends State<AddLecturer> {
   String location = '';
   String module= '';
   String klass = '';
+  String time= '';
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +60,16 @@ class _AddLecturerState extends State<AddLecturer> {
                   hintText: 'Enter Lecturer class',
                 ),
               ),
+              TextField(
+                onChanged: (value) {
+                  setState(() {
+                    time = value;
+                  });
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Enter Lecturer time',
+                ),
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -82,7 +92,7 @@ class _AddLecturerState extends State<AddLecturer> {
     final docLecturer = FirebaseFirestore.instance.collection('lecturers').doc();
 
     try {
-      final lecturer = Lecturer(id: docLecturer.id, name: name,  module: module, klass: klass);
+      final lecturer = Lecturer(id: docLecturer.id, name: name,  module: module, klass: klass, time: time);
       final json = lecturer.toJson();
 
       await docLecturer.set(json);
