@@ -123,40 +123,27 @@ class HomeScreen extends StatelessWidget {
 
                       // },
                       child: ListTile(
-                        leading: const Icon(Icons.school),
-                        title: Text(lecturers[index].name),
-                        subtitle: Row(
+                        leading: Text(
+                          lecturers[index].name,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        trailing: Text(
+                          lecturers[index].name,
+                          style: const TextStyle(fontSize: 10),
+                        ),
+                        
+                        title: Text(
+                          lecturers[index].name,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(lecturers[index].module),
                             const SizedBox(
-                              width: 5,
+                              height: 5,
                             ),
                             Text(lecturers[index].klass),
-                          ],
-                        ),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         EditLecturer(lecturer: lecturers[index]),
-                                //   ),
-                                // );
-                              },
-                              icon: const Icon(Icons.edit),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                deleteLecturer(
-                                    context: context,
-                                    lecturer: lecturers[index]);
-                              },
-                              icon: const Icon(Icons.delete),
-                            ),
                           ],
                         ),
                       ),
