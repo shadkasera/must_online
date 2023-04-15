@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:must_online/models/lecturer.dart';
+import 'package:must_online/models/school.dart';
 
-import 'add_lecturer.dart';
+import 'add_school.dart';
+import 'edit_school.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -34,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const AddLecturer(),
+                    builder: (context) => const AddSchool(),
                   ),
                 );
               },
@@ -94,19 +95,20 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
+        
         child: StreamBuilder(
-            stream: readLecturer(),
+            stream: readSchools(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                final lecturers = snapshot.data!;
+                final schools = snapshot.data!;
                 return ListView.separated(
                   shrinkWrap: true,
-                  itemCount: lecturers.length,
+                  itemCount: schools.length,
                   separatorBuilder: (BuildContext context, int index) =>
                       const Divider(),
                   itemBuilder: (BuildContext context, int index) {
                     return Dismissible(
-                      key: Key(lecturers[index].id),
+                      key: Key(schools[index].id),
                       direction: DismissDirection.endToStart,
                       background: Container(
                         color: Colors.red,
@@ -117,43 +119,34 @@ class HomeScreen extends StatelessWidget {
                           size: 30.0,
                         ),
                       ),
-                      // onDismissed: (direction) {
-                      //   deleteSchool(
-                      //               context: context, school: lecturers[index]);
-
-                      // },
+                      onDismissed: (direction) {
+                        deleteSchool(
+                                    context: context, school: schools[index]);
+                       
+                      },
                       child: ListTile(
                         leading: const Icon(Icons.school),
-                        title: Text(lecturers[index].name),
-                        subtitle: Row(
-                          children: [
-                            Text(lecturers[index].module),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(lecturers[index].klass),
-                          ],
-                        ),
+                        title: Text(schools[index].name),
+                        subtitle: Text(schools[index].location),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
                               onPressed: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         EditLecturer(lecturer: lecturers[index]),
-                                //   ),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditSchool(school: schools[index]),
+                                  ),
+                                );
                               },
                               icon: const Icon(Icons.edit),
                             ),
                             IconButton(
                               onPressed: () {
-                                deleteLecturer(
-                                    context: context,
-                                    lecturer: lecturers[index]);
+                                deleteSchool(
+                                    context: context, school: schools[index]);
                               },
                               icon: const Icon(Icons.delete),
                             ),
@@ -172,24 +165,24 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Stream<List<Lecturer>> readLecturer() =>
-      FirebaseFirestore.instance.collection('lecturers').snapshots().map(
+  Stream<List<School>> readSchools() =>
+      FirebaseFirestore.instance.collection('schools').snapshots().map(
             (snapshot) => snapshot.docs
                 .map(
-                  (doc) => Lecturer.fromJson(
+                  (doc) => School.fromJson(
                     doc.data(),
                   ),
                 )
                 .toList(),
           );
 
-  Future<void> deleteLecturer(
-      {required BuildContext context, required Lecturer lecturer}) async {
-    final docLecturer =
-        FirebaseFirestore.instance.collection('lecturers').doc(lecturer.id);
+  Future<void> deleteSchool(
+      {required BuildContext context, required School school}) async {
+    final docSchool =
+        FirebaseFirestore.instance.collection('schools').doc(school.id);
 
     try {
-      await docLecturer.delete();
+      await docSchool.delete();
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
