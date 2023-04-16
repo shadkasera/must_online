@@ -169,12 +169,7 @@ class WelcomePageState extends State<WelcomePage> {
                  ElevatedButton(
                         child: const Text('new'),
                         onPressed: () {
-                          Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
-                  ),
-                );
+                   
                         },
                       ),
           ],
