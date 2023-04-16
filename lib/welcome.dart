@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+class WelcomePage extends StatefulWidget {
+  const WelcomePage({super.key});
 
   @override
-  _SearchPageState createState() => _SearchPageState();
+  WelcomePageState createState() => WelcomePageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class WelcomePageState extends State<WelcomePage> {
   bool _isSearching = false;
   bool _showButtons = false;
 
@@ -89,25 +89,70 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: Column(children: [
         _isSearching ? buildSearchBar() : Container(),
-        ElevatedButton(
-          onPressed: () {
-            setState(() {
-              _showButtons = !_showButtons;
-            });
-          },
-          child: const Text('MON'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _showButtons = !_showButtons;
+                });
+              },
+              child: const Text('MON'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _showButtons = !_showButtons;
+                });
+              },
+              child: const Text('MON'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _showButtons = !_showButtons;
+                });
+              },
+              child: const Text('MON'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _showButtons = !_showButtons;
+                });
+              },
+              child: const Text('MON'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _showButtons = !_showButtons;
+                });
+              },
+              child: const Text('MON'),
+            ),
+          ],
         ),
-        
         _showButtons
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ? Column(
                 children: [
                   ElevatedButton(
                     child: const Text('Sub-Button 1'),
-                    onPressed: () {},
+                    onPressed: () {
+                      
+                    },
                   ),
                   ElevatedButton(
                     child: const Text('Sub-Button 2'),
+                    onPressed: () {},
+                  ),
+                  ElevatedButton(
+                    child: const Text('Sub-Button 3'),
+                    onPressed: () {},
+                  ),
+                  ElevatedButton(
+                    child: const Text('Sub-Button 3'),
                     onPressed: () {},
                   ),
                   ElevatedButton(
