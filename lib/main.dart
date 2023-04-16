@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const WelcomPage();
+              return const SearchPage();
             } else {
               return const Login();
             }

@@ -28,42 +28,45 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              buildButton('Button 1'),
-              buildButton('Button 2'),
-              buildButton('Button 3'),
-              buildButton('Button 4'),
-              buildButton('Button 5'),
-            ],
-          ),
           _isSearching ? buildSearchBar() : Container(),
         ],
       ),
     );
   }
 
-  Widget buildButton(String title) {
-    return ElevatedButton(
-      child: Text(title),
-      onPressed: () {
-        setState(() {
-          _isSearching = true;
-        });
-      },
-    );
-  }
-
-  Widget buildSearchBar() {
-    return  Container(
+ Widget buildSearchBar() {
+  return Material(
+    elevation: 4.0,
+    child: Container(
       padding: const EdgeInsets.all(10),
-      child: const TextField(
-        decoration: InputDecoration(
-          hintText: 'Search',
-          border: OutlineInputBorder(),
-        ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search',
+                border: InputBorder.none,
+              ),
+              onSubmitted: (value) {
+                setState(() {
+                  _isSearching = false;
+                });
+              },
+            ),
+          ),
+          IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () {
+              setState(() {
+                _isSearching = false;
+              });
+            },
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
+
 }
