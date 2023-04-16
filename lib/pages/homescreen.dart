@@ -95,6 +95,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: StreamBuilder(
+          
             stream: readLecturer(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
