@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[500],
@@ -66,23 +65,22 @@ class HomeScreen extends StatelessWidget {
 
                       // },
                       child: ListTile(
-                        leading: Text(
-                          lecturers[index].room,
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        trailing: Column(
+                        leading: Column(
                           children: [
-                             Text(
-                              lecturers[index].room,
-                              style: const TextStyle(fontSize: 24),
+                            Text(
+                              lecturers[index].day,
+                              style: const TextStyle(fontSize: 20),
                             ),
                             Text(
                               lecturers[index].time,
                               style: const TextStyle(fontSize: 16),
                             ),
-                           
                           ],
                         ),
+                        trailing: Text(
+                         lecturers[index].room,
+                         style: const TextStyle(fontSize: 24),
+                            ),
                         title: Text(
                           lecturers[index].name,
                           style: const TextStyle(fontSize: 24),

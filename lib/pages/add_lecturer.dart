@@ -14,6 +14,7 @@ class _AddLecturerState extends State<AddLecturer> {
   String room = '';
   String module = '';
   String klass = '';
+  String day = '';
   String time = '';
 
   @override
@@ -81,6 +82,16 @@ class _AddLecturerState extends State<AddLecturer> {
                 ),
               ),
               const SizedBox(height: 20),
+              TextField(
+                onChanged: (value) {
+                  setState(() {
+                    day = value;
+                  });
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Enter day',
+                ),
+              ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
@@ -109,6 +120,7 @@ class _AddLecturerState extends State<AddLecturer> {
           room: room,
           module: module,
           klass: klass,
+          day: day,
           time: time);
       final json = lecturer.toJson();
 
