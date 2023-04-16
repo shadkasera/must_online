@@ -70,9 +70,18 @@ class HomeScreen extends StatelessWidget {
                           lecturers[index].room,
                           style: const TextStyle(fontSize: 20),
                         ),
-                        trailing: Text(
-                          lecturers[index].time,
-                          style: const TextStyle(fontSize: 20),
+                        trailing: Column(
+                          children: [
+                             Text(
+                              lecturers[index].room,
+                              style: const TextStyle(fontSize: 24),
+                            ),
+                            Text(
+                              lecturers[index].time,
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                           
+                          ],
                         ),
                         title: Text(
                           lecturers[index].name,
