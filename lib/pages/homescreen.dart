@@ -14,16 +14,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[500],
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
         title: const Text('MUST  TIMETABLE'),
         centerTitle: true,
         actions: [
@@ -46,56 +36,8 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: const Color(0xffc0dbe9),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.person,
-                      color: Colors.white,
-                      size: 50,
-                    ),
-                    Text(
-                      user.email!,
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                // Update the UI
-              },
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.logout,
-              ),
-              title: const Text('Log out'),
-              onTap: () {
-                // Update the UI
-                FirebaseAuth.instance.signOut();
-              },
-            ),
-          ],
-        ),
-      ),
       body: SafeArea(
         child: StreamBuilder(
-           
             stream: readLecturer(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -124,27 +66,32 @@ class HomeScreen extends StatelessWidget {
 
                       // },
                       child: ListTile(
-                        // leading: Text(
-                        //   lecturers[index].name,
-                        //   style: const TextStyle(fontSize: 12),
-                        // ),
+                        leading: Text(
+                          lecturers[index].room,
+                          style: const TextStyle(fontSize: 20),
+                        ),
                         trailing: Text(
                           lecturers[index].time,
-                          style: const TextStyle(fontSize: 14),
+                          style: const TextStyle(fontSize: 20),
                         ),
-                        
                         title: Text(
                           lecturers[index].name,
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 24),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(lecturers[index].module),
+                            Text(
+                              lecturers[index].module,
+                              style: const TextStyle(fontSize: 20),
+                            ),
                             const SizedBox(
                               height: 5,
                             ),
-                            Text(lecturers[index].klass),
+                            Text(
+                              lecturers[index].klass,
+                              style: const TextStyle(fontSize: 18),
+                            ),
                           ],
                         ),
                       ),
@@ -170,32 +117,4 @@ class HomeScreen extends StatelessWidget {
                 )
                 .toList(),
           );
-
-  Future<void> deleteLecturer(
-      {required BuildContext context, required Lecturer lecturer}) async {
-    final docLecturer =
-        FirebaseFirestore.instance.collection('lecturers').doc(lecturer.id);
-
-    try {
-      await docLecturer.delete();
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            'School Deleted Successfully',
-          ),
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 5),
-        ),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error $e'),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 5),
-        ),
-      );
-    }
-  }
 }

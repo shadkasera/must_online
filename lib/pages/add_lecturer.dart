@@ -11,10 +11,10 @@ class AddLecturer extends StatefulWidget {
 
 class _AddLecturerState extends State<AddLecturer> {
   String name = '';
-  String location = '';
-  String module= '';
+  String room = '';
+  String module = '';
   String klass = '';
-  String time= '';
+  String time = '';
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +40,16 @@ class _AddLecturerState extends State<AddLecturer> {
                 ),
               ),
               const SizedBox(height: 10),
+              TextField(
+                onChanged: (value) {
+                  setState(() {
+                    room = value;
+                  });
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Enter Room',
+                ),
+              ),
               TextField(
                 onChanged: (value) {
                   setState(() {
@@ -89,23 +99,31 @@ class _AddLecturerState extends State<AddLecturer> {
   }
 
   Future createLecturer({required BuildContext context}) async {
-    final docLecturer = FirebaseFirestore.instance.collection('lecturers').doc();
+    final docLecturer =
+        FirebaseFirestore.instance.collection('lecturers').doc();
 
     try {
-      final lecturer = Lecturer(id: docLecturer.id, name: name,  module: module, klass: klass, time: time);
+      final lecturer = Lecturer(
+          id: docLecturer.id,
+          name: name,
+          room: room,
+          module: module,
+          klass: klass,
+          time: time);
       final json = lecturer.toJson();
 
       await docLecturer.set(json);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Lecturer Added Successfully',),
+          content: Text(
+            'Lecturer Added Successfully',
+          ),
           backgroundColor: Colors.green,
           duration: Duration(seconds: 5),
         ),
-
       );
-        Navigator.pop(context);
+      Navigator.pop(context);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

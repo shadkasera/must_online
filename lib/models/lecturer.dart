@@ -3,6 +3,7 @@ import 'dart:convert';
 class Lecturer {
   String id;
   String name;
+  String room;
   String module;
   String klass;
   String time;
@@ -10,12 +11,13 @@ class Lecturer {
 
 
 
-  Lecturer({required this.id, required this.name, required this.module, required this.klass, required this.time});
+  Lecturer({required this.id, required this.name, required this.module, required this.klass, required this.time, required this.room});
 
   factory Lecturer.fromJson(Map<String, dynamic> json) {
     return Lecturer(
       id: json['id'],
       name: json['name'],
+      room: json['room'],
       module: json['module'],
       klass: json['klass'],
       time: json['time'],
@@ -27,6 +29,7 @@ class Lecturer {
     return {
       'id': id,
       'name': name,
+      'room': room,
       'module': module,
       'klass': klass,
       'time': time,
