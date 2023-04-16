@@ -3,6 +3,7 @@ import 'package:must_online/pages/homescreen.dart';
 import 'package:must_online/pages/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:must_online/welcome.dart';
 import 'firebase_options.dart';
 
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const HomeScreen();
+              return const WelcomPage();
             } else {
               return const Login();
             }
