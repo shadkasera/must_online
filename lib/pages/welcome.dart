@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:must_online/pages/homescreen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -87,82 +88,98 @@ class WelcomePageState extends State<WelcomePage> {
           ],
         ),
       ),
-      body: Column(children: [
-        _isSearching ? buildSearchBar() : Container(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        child: Column(
           children: [
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _showButtons = !_showButtons;
-                });
-              },
-              child: const Text('MON'),
+            _isSearching ? buildSearchBar() : Container(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _showButtons = !_showButtons;
+                    });
+                  },
+                  child: const Text('MON'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _showButtons = !_showButtons;
+                    });
+                  },
+                  child: const Text('MON'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _showButtons = !_showButtons;
+                    });
+                  },
+                  child: const Text('MON'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _showButtons = !_showButtons;
+                    });
+                  },
+                  child: const Text('MON'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _showButtons = !_showButtons;
+                    });
+                  },
+                  child: const Text('MON'),
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _showButtons = !_showButtons;
-                });
-              },
-              child: const Text('MON'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _showButtons = !_showButtons;
-                });
-              },
-              child: const Text('MON'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _showButtons = !_showButtons;
-                });
-              },
-              child: const Text('MON'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _showButtons = !_showButtons;
-                });
-              },
-              child: const Text('MON'),
-            ),
+            _showButtons
+                ? Column(
+                    children: [
+                      ElevatedButton(
+                        child: const Text('Sub-Button 1'),
+                        onPressed: () {},
+                      ),
+                      ElevatedButton(
+                        child: const Text('Sub-Button 2'),
+                        onPressed: () {},
+                      ),
+                      ElevatedButton(
+                        child: const Text('Sub-Button 3'),
+                        onPressed: () {},
+                      ),
+                      ElevatedButton(
+                        child: const Text('Sub-Button 3'),
+                        onPressed: () {},
+                      ),
+                      ElevatedButton(
+                        child: const Text('Sub-Button 3'),
+                        onPressed: () {},
+                      ),
+                     
+                     
+                    ],
+                  )
+                : const SizedBox.shrink(),
+                 ElevatedButton(
+                        child: const Text('new'),
+                        onPressed: () {
+                          Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
+                  ),
+                );
+                        },
+                      ),
           ],
         ),
-        _showButtons
-            ? Column(
-                children: [
-                  ElevatedButton(
-                    child: const Text('Sub-Button 1'),
-                    onPressed: () {
-                      
-                    },
-                  ),
-                  ElevatedButton(
-                    child: const Text('Sub-Button 2'),
-                    onPressed: () {},
-                  ),
-                  ElevatedButton(
-                    child: const Text('Sub-Button 3'),
-                    onPressed: () {},
-                  ),
-                  ElevatedButton(
-                    child: const Text('Sub-Button 3'),
-                    onPressed: () {},
-                  ),
-                  ElevatedButton(
-                    child: const Text('Sub-Button 3'),
-                    onPressed: () {},
-                  ),
-                ],
-              )
-            : const SizedBox.shrink(),
-      ]),
+      ),
     );
   }
 

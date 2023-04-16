@@ -6,8 +6,8 @@ import 'package:must_online/models/school.dart';
 import 'add_school.dart';
 import 'edit_school.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreenCopy extends StatelessWidget {
+  const HomeScreenCopy({super.key});
 
   @override
   Widget build(BuildContext context) {
