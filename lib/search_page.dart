@@ -43,7 +43,7 @@ class _SearchPageState extends State<SearchPage> {
         children: [
           Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search',
                 border: InputBorder.none,
               ),
@@ -55,7 +55,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
             onPressed: () {
               setState(() {
                 _isSearching = false;
