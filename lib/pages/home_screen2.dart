@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:must_online/models/lecturer.dart';
 import 'package:must_online/pages/add_class.dart';
 
 import '../models/class.dart';
-import 'add_lecturer.dart';
 
 class HomeScreen2 extends StatelessWidget {
   const HomeScreen2({super.key});
