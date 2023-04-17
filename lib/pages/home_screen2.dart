@@ -75,24 +75,24 @@ class HomeScreen2 extends StatelessWidget {
                             ),
                             Text(
                               klasses[index].time,
-                              style: const TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 12),
                             ),
                           ],
                         ),
                         trailing: Text(
                          klasses[index].room,
-                         style: const TextStyle(fontSize: 24),
+                         style: const TextStyle(fontSize: 20),
                             ),
                         title: Text(
                           klasses[index].name,
-                          style: const TextStyle(fontSize: 24),
+                          style: const TextStyle(fontSize: 24, color: Colors.green, fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               klasses[index].module,
-                              style: const TextStyle(fontSize: 20),
+                              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               klasses[index].lecturer,

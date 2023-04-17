@@ -50,7 +50,7 @@ class _AddClassState extends State<AddClass> {
                   });
                 },
                 decoration: const InputDecoration(
-                  hintText: 'Enter Room',
+                  hintText: 'Enter  Class Room',
                 ),
               ),
               TextField(
@@ -60,7 +60,7 @@ class _AddClassState extends State<AddClass> {
                   });
                 },
                 decoration: const InputDecoration(
-                  hintText: 'Enter Lecturer module',
+                  hintText: 'Enter the module',
                 ),
               ),
               TextField(
