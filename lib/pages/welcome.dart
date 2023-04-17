@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:must_online/pages/home_screen2.dart';
 import 'package:must_online/pages/homescreen.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -173,6 +174,17 @@ class WelcomePageState extends State<WelcomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const HomeScreen(),
+                  ),
+                );
+                        },
+                      ),
+                       ElevatedButton(
+                        child: const Text('new2'),
+                        onPressed: () {
+                          Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen2(),
                   ),
                 );
                         },
