@@ -94,6 +94,10 @@ class HomeScreen2 extends StatelessWidget {
                               klasses[index].module,
                               style: const TextStyle(fontSize: 20),
                             ),
+                            Text(
+                              klasses[index].lecturer,
+                              style: const TextStyle(fontSize: 18),
+                            ),
                             const SizedBox(
                               height: 5,
                             ),
