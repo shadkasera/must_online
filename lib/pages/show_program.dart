@@ -4,14 +4,14 @@ import 'package:must_online/pages/add_class.dart';
 
 import '../models/class.dart';
 
-class ShowLecturer extends StatefulWidget {
-  const ShowLecturer({super.key});
+class ShowProgram extends StatefulWidget {
+  const ShowProgram({super.key});
 
   @override
-  State<ShowLecturer> createState() => ShowLecturerState();
+  State<ShowProgram> createState() => ShowProgramState();
 }
 
-class ShowLecturerState extends State<ShowLecturer> {
+class ShowProgramState extends State<ShowProgram> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
