@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:must_online/pages/home_screen2.dart';
+import 'package:must_online/pages/show_lecturer.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -140,7 +141,7 @@ class WelcomePageState extends State<WelcomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen2(),
+                        builder: (context) => const ShowLecturer(),
                       ),
                     );
                   },

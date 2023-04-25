@@ -4,14 +4,14 @@ import 'package:must_online/pages/add_class.dart';
 
 import '../models/class.dart';
 
-class HomeScreen2 extends StatefulWidget {
-  const HomeScreen2({super.key});
+class ShowLecturer extends StatefulWidget {
+  const ShowLecturer({super.key});
 
   @override
-  State<HomeScreen2> createState() => _HomeScreen2State();
+  State<ShowLecturer> createState() => ShowLecturerState();
 }
 
-class _HomeScreen2State extends State<HomeScreen2> {
+class ShowLecturerState extends State<ShowLecturer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +69,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                         style: const TextStyle(fontSize: 20),
                       ),
                       title: Text(
-                        klasses[index].name,
+                        klasses[index].lecturer,
                         style: const TextStyle(
                             fontSize: 24,
                             color: Colors.black,
@@ -84,7 +84,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            klasses[index].lecturer,
+                            klasses[index].name,
                             style: const TextStyle(fontSize: 18),
                           ),
                           const SizedBox(

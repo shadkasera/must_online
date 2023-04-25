@@ -38,6 +38,7 @@ class _AddClassState extends State<AddClass> {
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
+                    style: const TextStyle(fontSize: 20),
                     cursorColor: Colors.black,
                     onChanged: (value) {
                       setState(() {
@@ -61,6 +62,7 @@ class _AddClassState extends State<AddClass> {
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
+                    style: const TextStyle(fontSize: 20),
                     cursorColor: Colors.black,
                     onChanged: (value) {
                       setState(() {
@@ -84,6 +86,7 @@ class _AddClassState extends State<AddClass> {
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
+                    style: const TextStyle(fontSize: 20),
                     cursorColor: Colors.black,
                     onChanged: (value) {
                       setState(() {
@@ -108,6 +111,7 @@ class _AddClassState extends State<AddClass> {
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
+                    style: const TextStyle(fontSize: 20),
                     cursorColor: Colors.black,
                     onChanged: (value) {
                       setState(() {
@@ -132,6 +136,8 @@ class _AddClassState extends State<AddClass> {
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
+                    cursorColor: Colors.black,
+                    style: const TextStyle(fontSize: 20),
                     onChanged: (value) {
                       setState(() {
                         time = value;
@@ -153,6 +159,8 @@ class _AddClassState extends State<AddClass> {
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
+                    cursorColor: Colors.black,
+                    style: const TextStyle(fontSize: 20),
                     onChanged: (value) {
                       setState(() {
                         day = value;
@@ -225,7 +233,7 @@ class _AddClassState extends State<AddClass> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Class Added Successfully',
+            'ClassTimetable Added Successfully',
           ),
           backgroundColor: Colors.green,
           duration: Duration(seconds: 5),
