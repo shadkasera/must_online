@@ -237,7 +237,10 @@ class WelcomePageState extends State<WelcomePage> {
             Expanded(
               child: TextField(
                 decoration: const InputDecoration(
-                  hintText: 'Search',hintStyle: TextStyle(fontSize: 20),
+                  hintText: 'Search',
+                  hintStyle: TextStyle(
+                    fontSize: 20,
+                  ),
                   border: InputBorder.none,
                 ),
                 onSubmitted: (value) {

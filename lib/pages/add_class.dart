@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:must_online/models/lecturer.dart';
 
 import '../models/class.dart';
 
@@ -24,7 +23,7 @@ class _AddClassState extends State<AddClass> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Add Class'),
+        title: const Text('Add Class Timetable'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -32,77 +31,173 @@ class _AddClassState extends State<AddClass> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    name = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter Class  Name',
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextField(
+                    cursorColor: Colors.black,
+                    onChanged: (value) {
+                      setState(() {
+                        name = value;
+                      });
+                    },
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(16),
+                      hintText: 'Enter Class  Name',
+                      hintStyle: TextStyle(fontSize: 20),
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 10),
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    room = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter  Class Room',
+              //another one
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextField(
+                    cursorColor: Colors.black,
+                    onChanged: (value) {
+                      setState(() {
+                        room = value;
+                      });
+                    },
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(16),
+                      hintText: 'Enter Classroom',
+                      hintStyle: TextStyle(fontSize: 20),
+                    ),
+                  ),
                 ),
               ),
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    module = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter the module',
+              //another
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextField(
+                    cursorColor: Colors.black,
+                    onChanged: (value) {
+                      setState(() {
+                        module = value;
+                      });
+                    },
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(16),
+                      hintText: 'Enter the module',
+                      hintStyle: TextStyle(fontSize: 20),
+                    ),
+                  ),
                 ),
               ),
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    lecturer = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter Lecturer name',
+
+              //another
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextField(
+                    cursorColor: Colors.black,
+                    onChanged: (value) {
+                      setState(() {
+                        lecturer = value;
+                      });
+                    },
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(16),
+                      hintText: 'Enter Lecturer name',
+                      hintStyle: TextStyle(fontSize: 20),
+                    ),
+                  ),
                 ),
               ),
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    time = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter  time',
+
+              //another
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        time = value;
+                      });
+                    },
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(16),
+                      hintText: 'Enter Time',
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    day = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter day',
+              //another
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        day = value;
+                      });
+                    },
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(16),
+                      hintText: 'Enter day',
+                    ),
+                  ),
                 ),
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue[400],
+              //another
+              //  /another
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.green[400],
+                  ),
+                  onPressed: () {
+                    createKlass(context: context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 13,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          Icons.add,
+                          size: 30,
+                        ),
+                        Text(
+                          'Add',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                onPressed: () {
-                  createKlass(context: context);
-                },
-                child: const Text('Submit'),
               ),
             ],
           ),

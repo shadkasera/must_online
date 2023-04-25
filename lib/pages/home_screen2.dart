@@ -4,14 +4,19 @@ import 'package:must_online/pages/add_class.dart';
 
 import '../models/class.dart';
 
-class HomeScreen2 extends StatelessWidget {
+class HomeScreen2 extends StatefulWidget {
   const HomeScreen2({super.key});
 
+  @override
+  State<HomeScreen2> createState() => _HomeScreen2State();
+}
+
+class _HomeScreen2State extends State<HomeScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[500],
+        backgroundColor: Colors.green,
         title: const Text('MUST  TIMETABLE'),
         centerTitle: true,
         actions: [
@@ -33,74 +38,59 @@ class HomeScreen2 extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: const Color(0xffc0dbe9),
+      backgroundColor: Colors.grey[500],
       body: SafeArea(
         child: StreamBuilder(
             stream: readKlass(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                 final klasses = snapshot.data!;
+                final klasses = snapshot.data!;
                 return ListView.separated(
                   shrinkWrap: true,
                   itemCount: klasses.length,
                   separatorBuilder: (BuildContext context, int index) =>
                       const Divider(),
                   itemBuilder: (BuildContext context, int index) {
-                    return Dismissible(
-                      key: Key(klasses[index].id),
-                      direction: DismissDirection.endToStart,
-                      background: Container(
-                        color: Colors.red,
-                        alignment: Alignment.centerRight,
-                        child: const Icon(
-                          Icons.delete_forever,
-                          color: Colors.white,
-                          size: 30.0,
-                        ),
+                    return ListTile(
+                      leading: Column(
+                        children: [
+                          Text(
+                            klasses[index].day,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            klasses[index].time,
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ],
                       ),
-                      // onDismissed: (direction) {
-                      //   deleteSchool(
-                      //               context: context, school: klasses[index]);
-
-                      // },
-                      child: ListTile(
-                        leading: Column(
-                          children: [
-                            Text(
-                              klasses[index].day,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                            Text(
-                              klasses[index].time,
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                          ],
-                        ),
-                        trailing: Text(
-                         klasses[index].room,
-                         style: const TextStyle(fontSize: 20),
-                            ),
-                        title: Text(
-                          klasses[index].name,
-                          style: const TextStyle(fontSize: 24, color: Colors.green, fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              klasses[index].module,
-                              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              klasses[index].lecturer,
-                              style: const TextStyle(fontSize: 18),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                           
-                          ],
-                        ),
+                      trailing: Text(
+                        klasses[index].room,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      title: Text(
+                        klasses[index].name,
+                        style: const TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            klasses[index].module,
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            klasses[index].lecturer,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                        ],
                       ),
                     );
                   },
