@@ -21,19 +21,9 @@ class _LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.green,
-                      width: 20.0,
-                    ),
-                  ),
-                  child: Image.asset(
-                    'assets/images/must_logo1.png',
-                    height: 80,
-                  ),
+                Image.asset(
+                  'assets/images/must_logo1.png',
+                  height: 80,
                 ),
 
                 const Padding(
@@ -45,7 +35,7 @@ class _LoginState extends State<Login> {
                     'MUST TIMETABLE',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 30,
                         color: Colors.black),
                   ),
                 ),
@@ -58,7 +48,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30,
-                    vertical: 25,
+                    vertical: 10,
                   ),
                   child: Container(
                     decoration: BoxDecoration(
@@ -146,11 +136,11 @@ class _LoginState extends State<Login> {
 
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
+                      const EdgeInsets.symmetric(vertical: 40, horizontal: 30),
                   child: ElevatedButton(
                     onPressed: () => login(context),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
@@ -161,7 +151,7 @@ class _LoginState extends State<Login> {
                           Text(
                             'Log In',
                             style: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 20.0,
                             ),
                           ),
                         ],
@@ -174,12 +164,16 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text(
-                      'New?',
-                      style: TextStyle(fontSize: 18),
+                      'Don\'t have account?',
+                      style:
+                          TextStyle(fontSize: 18, ),
                     ),
                     Text(
-                      '  create account',
-                      style: TextStyle(fontSize: 18, color: Colors.blue),
+                      ' Sign Up',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -206,7 +200,7 @@ class _LoginState extends State<Login> {
               'Please check your input',
               style: TextStyle(fontSize: 24),
             ),
-            duration: Duration(seconds: 2),
+            duration: Duration(seconds: 5),
           ),
         );
       } else if (e.code == 'wrong-password') {
@@ -217,7 +211,7 @@ class _LoginState extends State<Login> {
               'Please check your input',
               style: TextStyle(fontSize: 24),
             ),
-            duration: Duration(seconds: 2),
+            duration: Duration(seconds: 5),
           ),
         );
       } else {
@@ -226,15 +220,15 @@ class _LoginState extends State<Login> {
             backgroundColor: Colors.red,
             behavior: SnackBarBehavior.floating, // set the behavior to floating
             content: SizedBox(
-              height: 100, // set the height of the Container widget
+              height: 50, // set the height of the Container widget
               child: Center(
                 child: Text(
-                  'Please check your email and password!',
-                  style: TextStyle(fontSize: 24),
+                  'Please provide correct email and password!',
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
             ),
-            duration: Duration(seconds: 2),
+            duration: Duration(seconds: 5),
           ),
         );
       }
