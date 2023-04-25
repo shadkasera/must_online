@@ -14,7 +14,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffc0dbe9),
+      backgroundColor: Colors.grey[400],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -165,14 +165,15 @@ class _LoginState extends State<Login> {
                   children: const [
                     Text(
                       'Don\'t have account?',
-                      style:
-                          TextStyle(fontSize: 18, ),
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                     Text(
                       ' Sign Up',
                       style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blue,
+                          fontSize: 18, 
+                          color: Colors.green, 
                           fontWeight: FontWeight.bold),
                     ),
                   ],

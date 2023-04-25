@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:must_online/pages/home_screen2.dart';
-import 'package:must_online/pages/homescreen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -12,12 +11,12 @@ class WelcomePage extends StatefulWidget {
 
 class WelcomePageState extends State<WelcomePage> {
   bool _isSearching = false;
-  bool _showButtons = false;
 
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
+      backgroundColor: Colors.grey[400],
       appBar: AppBar(
         leading: Builder(
           builder: (BuildContext context) {
@@ -48,7 +47,7 @@ class WelcomePageState extends State<WelcomePage> {
           children: [
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: Colors.blue,
+                color: Colors.green,
               ),
               child: Center(
                 child: Column(
@@ -77,6 +76,13 @@ class WelcomePageState extends State<WelcomePage> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                // Update the UI
+              },
+            ),
+            ListTile(
               leading: const Icon(
                 Icons.logout,
               ),
@@ -90,105 +96,51 @@ class WelcomePageState extends State<WelcomePage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _isSearching ? buildSearchBar() : Container(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _showButtons = !_showButtons;
-                    });
-                  },
-                  child: const Text('MON'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _showButtons = !_showButtons;
-                    });
-                  },
-                  child: const Text('MON'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _showButtons = !_showButtons;
-                    });
-                  },
-                  child: const Text('MON'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _showButtons = !_showButtons;
-                    });
-                  },
-                  child: const Text('MON'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _showButtons = !_showButtons;
-                    });
-                  },
-                  child: const Text('MON'),
-                ),
-              ],
+            const SizedBox(
+              height: 30,
             ),
-            _showButtons
-                ? Column(
-                    children: [
-                      ElevatedButton(
-                        child: const Text('Sub-Button 1'),
-                        onPressed: () {},
-                      ),
-                      ElevatedButton(
-                        child: const Text('Sub-Button 2'),
-                        onPressed: () {},
-                      ),
-                      ElevatedButton(
-                        child: const Text('Sub-Button 3'),
-                        onPressed: () {},
-                      ),
-                      ElevatedButton(
-                        child: const Text('Sub-Button 3'),
-                        onPressed: () {},
-                      ),
-                      ElevatedButton(
-                        child: const Text('Sub-Button 3'),
-                        onPressed: () {},
-                      ),
-                     
-                     
-                    ],
-                  )
-                : const SizedBox.shrink(),
-                 ElevatedButton(
-                        child: const Text('new'),
-                        onPressed: () {
-                          Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
-                  ),
-                );
-                        },
-                      ),
-                       ElevatedButton(
-                        child: const Text('new2'),
-                        onPressed: () {
-                          Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeScreen2(),
-                  ),
-                );
-                        },
-                      ),
+            SizedBox(
+              height: 50,
+              child: ElevatedButton(
+                child: const Text(
+                  'Lecture Timetables',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen2(),
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            SizedBox(
+              height: 50,
+              child: ElevatedButton(
+                child: const Text(
+                  'Tmetables',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen2(),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
