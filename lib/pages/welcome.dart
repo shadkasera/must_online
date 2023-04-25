@@ -34,9 +34,11 @@ class WelcomePageState extends State<WelcomePage> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              setState(() {
-                _isSearching = !_isSearching;
-              });
+              setState(
+                () {
+                  _isSearching = !_isSearching;
+                },
+              );
             },
           ),
         ],
@@ -97,51 +99,129 @@ class WelcomePageState extends State<WelcomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _isSearching ? buildSearchBar() : Container(),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              height: 50,
-              child: ElevatedButton(
-                child: const Text(
-                  'Lecture Timetables',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen2(),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _isSearching ? buildSearchBar() : Container(),
+              const SizedBox(height: 20),
+              RichText(
+                text: const TextSpan(
+                  text: 'WELCOME! \n\n',
+                  style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  children: [
+                    TextSpan(
+                      text:
+                          'MUST timetables have been put in different categories of view. You can view a timetable by room, Lecturer or class. Proceed to view your preffered timetable by the type from the buttons below.',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
                     ),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              height: 50,
-              child: ElevatedButton(
-                child: const Text(
-                  'Tmetables',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ],
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen2(),
-                    ),
-                  );
-                },
+                textAlign: TextAlign.center,
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  child: const Text(
+                    'View Lecturer\'s Timetables',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen2(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  child: const Text(
+                    'View Classroom Timetables',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen2(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+
+              //another
+
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  child: const Text(
+                    'View Program Timetables',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen2(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+
+              //another
+
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  child: const Text(
+                    'Search for free rooms',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const HomeScreen2(),
+                    //   ),
+                    // );
+                    setState(
+                      () {
+                        _isSearching = !_isSearching;
+                      },
+                    );
+                  },
+                ),
+              ),
+
+              //another
+              //another
+            ],
+          ),
         ),
       ),
     );
@@ -149,7 +229,7 @@ class WelcomePageState extends State<WelcomePage> {
 
   Widget buildSearchBar() {
     return Material(
-      elevation: 4.0,
+      elevation: 1.0,
       child: Container(
         padding: const EdgeInsets.all(10),
         child: Row(
@@ -157,7 +237,7 @@ class WelcomePageState extends State<WelcomePage> {
             Expanded(
               child: TextField(
                 decoration: const InputDecoration(
-                  hintText: 'Search',
+                  hintText: 'Search',hintStyle: TextStyle(fontSize: 20),
                   border: InputBorder.none,
                 ),
                 onSubmitted: (value) {
@@ -170,9 +250,11 @@ class WelcomePageState extends State<WelcomePage> {
             IconButton(
               icon: const Icon(Icons.clear),
               onPressed: () {
-                setState(() {
-                  _isSearching = false;
-                });
+                setState(
+                  () {
+                    _isSearching = false;
+                  },
+                );
               },
             ),
           ],
