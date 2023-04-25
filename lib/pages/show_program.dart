@@ -72,11 +72,11 @@ class ShowProgramState extends State<ShowProgram> {
                           ],
                         ),
                         trailing: Text(
-                          klasses[index].lecturer,
+                          klasses[index].room,
                           style: const TextStyle(fontSize: 20),
                         ),
                         title: Text(
-                          klasses[index].room,
+                          klasses[index].name,
                           style: const TextStyle(
                               fontSize: 24,
                               color: Colors.black,
@@ -86,12 +86,12 @@ class ShowProgramState extends State<ShowProgram> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              klasses[index].name,
+                              klasses[index].module,
                               style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              klasses[index].module,
+                              klasses[index].lecturer,
                               style: const TextStyle(fontSize: 18),
                             ),
                             const SizedBox(
